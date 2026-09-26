@@ -15,7 +15,7 @@ React + Vite frontend for the multi-vendor marketplace, built to connect directl
 
 ```bash
 npm install
-cp .env.example .env   # edit VITE_API_URL if needed
+md .env   # edit VITE_API_URL if needed
 npm run dev
 ```
 
@@ -34,28 +34,6 @@ live URL — nothing else in the code needs to change since every API call goes 
   customer's account cart.
 - **Response shape**: every endpoint returns `{ success, message, meta?, data }` — handled
   uniformly across all `Api/*.js` files.
-
-## Folder structure
-```
-src/
-  Api/            axios client + one file per module (auth, vendor, product, category,
-                  cart, order, review, admin) — mirrors your backend's route modules
-  Config/         app constants, image URL resolver
-  Layout/         MainLayout (public site), VendorLayout, AdminLayout (dashboard shells)
-  Shared/         Navbar, Footer, ProductCard, RatingStars, Loading
-  pages/
-    Auth/         AuthContext, ProtectedRoute, Login, RegisterCustomer, RegisterVendor
-    Cart/         CartContext (shared cart state), CartPage
-    Home/         Public homepage
-    Products/     Listing (filters/search/pagination) + Product details
-    Shop/         Vendor storefront + browse-all-shops page
-    Checkout/     Checkout form + order confirmation
-    Account/      Customer order history
-    Vendor/       Vendor dashboard (overview, products CRUD, orders, shop profile)
-    Admin/        Admin dashboard (vendors, products, customers, orders, reviews)
-  Ruters.jsx      All routes, wired with role-based ProtectedRoute guards
-  main.jsx        AuthProvider + CartProvider + RouterProvider
-```
 
 ## What's implemented
 - Public storefront: home, product listing with category/price/sort filters, product
